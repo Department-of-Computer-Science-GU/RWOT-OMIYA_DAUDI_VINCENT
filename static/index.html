@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ScamShield – AI-Powered Link Safety Detector</title>
+  <meta name="description" content="Instantly detect phishing and scam links using our Logistic Regression AI model trained on 500,000+ URLs." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Animated Background ── -->
+  <div class="bg-grid"></div>
+  <div class="bg-orb orb1"></div>
+  <div class="bg-orb orb2"></div>
+  <div class="bg-orb orb3"></div>
+
+  <!-- ── Navigation ── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7l-9-5z" fill="currentColor" opacity="0.2"/>
+            <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7l-9-5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="brand-name">ScamShield</span>
+        <span class="brand-badge">AI</span>
+      </div>
+      <div class="nav-status" id="navStatus">
+        <span class="status-dot"></span>
+        <span class="status-text">Connecting…</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <span class="tag-dot"></span>
+        Logistic Regression · ML Model Active
+      </div>
+      <h1 class="hero-title">
+        Detect Scam Links
+        <span class="gradient-text">Instantly.</span>
+      </h1>
+      <p class="hero-subtitle">
+        Powered by a Logistic Regression model trained on <strong>500,000+</strong> URLs,
+        ScamShield analyses link patterns to flag phishing attempts before they reach you.
+      </p>
+
+      <!-- ── Main Input Card ── -->
+      <div class="input-card" id="inputCard">
+        <div class="input-wrapper">
+          <div class="input-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+          </div>
+          <input
+            type="text"
+            id="urlInput"
+            class="url-input"
+            placeholder="Paste a URL to analyse…"
+            autocomplete="off"
+            autocorrect="off"
+            spellcheck="false"
+          />
+          <button class="clear-btn" id="clearBtn" title="Clear">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="batch-toggle">
+          <button class="toggle-btn" id="batchToggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/>
+              <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+            </svg>
+            Scan Multiple URLs
+          </button>
+        </div>
+
+        <textarea
+          id="batchInput"
+          class="batch-input hidden"
+          placeholder="Paste multiple URLs here, one per line…"
+          rows="5"
+        ></textarea>
+
+        <button class="scan-btn" id="scanBtn">
+          <span class="scan-btn-text">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+            </svg>
+            Analyse URL
+          </span>
+          <div class="btn-shimmer"></div>
+        </button>
+
+        <!-- Quick examples -->
+        <div class="examples">
+          <span class="examples-label">Try:</span>
+          <button class="example-chip" data-url="https://www.google.com">google.com</button>
+          <button class="example-chip" data-url="http://paypal-secure-login.ru/verify/account?id=123">PayPal phish</button>
+          <button class="example-chip" data-url="https://github.com/openai">github.com</button>
+          <button class="example-chip" data-url="http://bankofamerica-update.info/login.php">BofA phish</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num">500K+</div>
+        <div class="stat-lbl">Training URLs</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="statAccuracy">–</div>
+        <div class="stat-lbl">Model Accuracy</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="statScanned">0</div>
+        <div class="stat-lbl">URLs Scanned</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Results Area ── -->
+  <section class="results-section" id="resultsSection">
+    <div class="results-container" id="resultsContainer"></div>
+  </section>
+
+  <!-- ── How It Works ── -->
+  <section class="how-section">
+    <div class="how-inner">
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-sub">A four-step ML pipeline turns raw URLs into safety verdicts.</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+          </div>
+          <h3>URL Input</h3>
+          <p>You paste a URL. The system normalises it and extracts the raw text.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+            </svg>
+          </div>
+          <h3>TF-IDF Vectorisation</h3>
+          <p>URL tokens are transformed into a 30,000-dimensional TF-IDF feature vector.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"/>
+              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <h3>Logistic Regression</h3>
+          <p>The trained sigmoid model outputs a probability for scam vs legitimate.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7l-9-5z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+          </div>
+          <h3>Verdict</h3>
+          <p>A clear SAFE / SCAM verdict is returned with a confidence score and URL breakdown.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="brand-icon small">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7l-9-5z" fill="currentColor" opacity="0.3"/>
+            <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7l-9-5z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span>ScamShield</span>
+      </div>
+      <p class="footer-note">Machine Learning Coursework · Logistic Regression URL Detector</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

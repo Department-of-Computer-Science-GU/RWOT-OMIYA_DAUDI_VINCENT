@@ -1,0 +1,47 @@
+# ── Virtual environment ────────────────────────────────────────────────────────
+venv/
+.venv/
+env/
+ENV/
+
+# ── Python cache ───────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# ── Trained model artefacts (large binary files) ───────────────────────────────
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.pth
+
+# ── Dataset (large CSV — do not commit) ───────────────────────────────────────
+*.csv
+
+# ── Jupyter / IPython ─────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── Environment / secrets ─────────────────────────────────────────────────────
+.env
+.env.*
+*.env
+
+# ── OS junk ───────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE / editor ─────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ── Build / dist ─────────────────────────────────────────────────────────────
+build/
+dist/
+*.egg-info/
